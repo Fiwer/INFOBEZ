@@ -1,0 +1,13 @@
+C:\Users\Home\source\repos\Wis\Wis\bin\Debug\netcoreapp3.1\Wis.exe
+C:\Users\Home\source\repos\Wis\Wis\bin\Debug\netcoreapp3.1\Wis.deps.json
+C:\Users\Home\source\repos\Wis\Wis\bin\Debug\netcoreapp3.1\Wis.runtimeconfig.json
+C:\Users\Home\source\repos\Wis\Wis\bin\Debug\netcoreapp3.1\Wis.runtimeconfig.dev.json
+C:\Users\Home\source\repos\Wis\Wis\bin\Debug\netcoreapp3.1\Wis.dll
+C:\Users\Home\source\repos\Wis\Wis\bin\Debug\netcoreapp3.1\Wis.pdb
+C:\Users\Home\source\repos\Wis\Wis\obj\Debug\netcoreapp3.1\Wis.csprojAssemblyReference.cache
+C:\Users\Home\source\repos\Wis\Wis\obj\Debug\netcoreapp3.1\Wis.AssemblyInfoInputs.cache
+C:\Users\Home\source\repos\Wis\Wis\obj\Debug\netcoreapp3.1\Wis.AssemblyInfo.cs
+C:\Users\Home\source\repos\Wis\Wis\obj\Debug\netcoreapp3.1\Wis.csproj.CoreCompileInputs.cache
+C:\Users\Home\source\repos\Wis\Wis\obj\Debug\netcoreapp3.1\Wis.dll
+C:\Users\Home\source\repos\Wis\Wis\obj\Debug\netcoreapp3.1\Wis.pdb
+C:\Users\Home\source\repos\Wis\Wis\obj\Debug\netcoreapp3.1\Wis.genruntimeconfig.cache
