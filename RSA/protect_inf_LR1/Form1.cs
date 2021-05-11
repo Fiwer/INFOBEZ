@@ -241,8 +241,9 @@ namespace protect_inf_LR1
         foreach(var item in primes)
             listBox1.Items.Add(item);
 
-            textBox_p.Text = listBox1.Items[random.Next(1000, listBox1.Items.Count)].ToString();
-            textBox_q.Text = listBox1.Items[new Random().Next(1000, listBox1.Items.Count)].ToString();
+
+            textBox_p.Text = listBox1.Items[random.Next(226, listBox1.Items.Count)].ToString();
+            textBox_q.Text = listBox1.Items[new Random().Next(226, listBox1.Items.Count)].ToString();
         }
         public static List<int> get_primes(int n)
         {
