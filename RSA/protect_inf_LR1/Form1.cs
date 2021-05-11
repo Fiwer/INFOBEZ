@@ -234,14 +234,15 @@ namespace protect_inf_LR1
             //textBox_q.Text = Convert.ToString(randomItem_q);
 
             //Решето Эратосфена
+            listBox1.Items.Clear();
             Random random = new Random();
             List<int> primes = get_primes(10000);
 
         foreach(var item in primes)
             listBox1.Items.Add(item);
 
-            textBox_p.Text = listBox1.Items[new Random().Next(listBox1.Items.Count)].ToString();
-            textBox_q.Text = listBox1.Items[new Random(1).Next(listBox1.Items.Count)].ToString();
+            textBox_p.Text = listBox1.Items[random.Next(1000, listBox1.Items.Count)].ToString();
+            textBox_q.Text = listBox1.Items[new Random().Next(1000, listBox1.Items.Count)].ToString();
         }
         public static List<int> get_primes(int n)
         {
