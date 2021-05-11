@@ -20,7 +20,9 @@ namespace protect_inf_LR1
                                                         'Й', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Р', 'С', 
                                                         'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ', 'Ь', 'Ы', 'Ъ',
                                                         'Э', 'Ю', 'Я', ' ', '1', '2', '3', '4', '5', '6', '7',
-                                                        '8', '9', '0' };
+                                                        '8', '9', '0','A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
+                                                        'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S',
+                                                        'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
 
 
         public Form1()
@@ -204,31 +206,63 @@ namespace protect_inf_LR1
 
         private void button1_Click(object sender, EventArgs e) //Рандом случайных чисел 
         {
-            Random random = new Random();
-            bool primeno = true;
-            for (int i = 2; i < 150; i++)
-            {
-                for(int k = 2; k < 150; k++)
-                {
-                    if(i != k && i % k == 0)
-                    {
-                        primeno = false;
-                        break;
-                    }
-                }
-                if(primeno)
-                {
-                    listBox1.Items.Add(i);
-                }
-                primeno = true;
-            }
+            //Старый метод
+            //Random random = new Random();
+            //bool primeno = true;
+            //for (int i = 2; i < 1000; i++)
+            //{
+            //    for(int k = 2; k < 1000; k++)
+            //    {
+            //        if(i != k && i % k == 0)
+            //        {
+            //            primeno = false;
+            //            break;
+            //        }
+            //    }
+            //    if(primeno)
+            //    {
+            //        listBox1.Items.Add(i);
+            //    }
+            //    primeno = true;
+            //}
 
-            int randomIndex_p = random.Next(listBox1.Items.Count);
-            int randomIndex_q = random.Next(listBox1.Items.Count);
-            var randomItem_p = listBox1.Items[randomIndex_p];
-            var randomItem_q = listBox1.Items[randomIndex_q];
-            textBox_p.Text = Convert.ToString(randomItem_p);
-            textBox_q.Text = Convert.ToString(randomItem_q);
+            //int randomIndex_p = random.Next(listBox1.Items.Count);
+            //int randomIndex_q = random.Next(listBox1.Items.Count);
+            //var randomItem_p = listBox1.Items[randomIndex_p];
+            //var randomItem_q = listBox1.Items[randomIndex_q];
+            //textBox_p.Text = Convert.ToString(randomItem_p);
+            //textBox_q.Text = Convert.ToString(randomItem_q);
+
+            //Решето Эратосфена
+            Random random = new Random();
+            List<int> primes = get_primes(10000);
+
+        foreach(var item in primes)
+            listBox1.Items.Add(item);
+
+            textBox_p.Text = listBox1.Items[new Random().Next(listBox1.Items.Count)].ToString();
+            textBox_q.Text = listBox1.Items[new Random(1).Next(listBox1.Items.Count)].ToString();
         }
+        public static List<int> get_primes(int n)
+        {
+
+            bool[] is_prime = new bool[n + 1];
+            for (int i = 2; i <= n; ++i)
+                is_prime[i] = true;
+
+            List<int> primes = new List<int>();
+
+            for (int i = 2; i <= n; ++i)
+                if (is_prime[i])
+                {
+                    primes.Add(i);
+                    if (i * i <= n)
+                        for (int j = i * i; j <= n; j += i)
+                            is_prime[j] = false;
+                }
+
+            return primes;
+        }
+
     }
 }
