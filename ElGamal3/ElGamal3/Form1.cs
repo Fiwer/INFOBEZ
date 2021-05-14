@@ -68,8 +68,8 @@ namespace ElGamal3
                     if (m > 0)
                     {
                         int k = Rand() % (p - 2) + 1; // 1 < k < (p-1)
-                        int a = power(g, k, p);
-                        int b = mul(power(y, k, p), m, p);
+                        int a = power(g, k, p); // a = g^k modp 
+                        int b = mul(power(y, k, p), m, p); // b = y^k M modp
                         txtBCrypt.Text = txtBCrypt.Text + a + " " + b + " ";
                     }
                 }
@@ -93,7 +93,7 @@ namespace ElGamal3
                         b = strA[i + 1].ToCharArray();
                         for (int j = 0; (j < a.Length); j++)
                         {
-                            ai = ai * 10 + (int)(a[j] - 48);
+                            ai = ai * 10 + (int)(a[j] - 48); 
                         }
                         for (int j = 0; (j < b.Length); j++)
                         {
@@ -101,7 +101,7 @@ namespace ElGamal3
                         }
                         if ((ai != 0) && (bi != 0))
                         {
-                            int deM = mul(bi, power(ai, p - 1 - x, p), p);// формула для дешифрования 
+                            int deM = mul(bi, power(ai, p - 1 - x, p), p);// формула для дешифрования  M = b(a^x)^-1 mod p = ba^(p-1-x) mod p
                             char m = (char)deM;
                             txtBDecrypt.Text = txtBDecrypt.Text + m;
                         }
@@ -153,31 +153,37 @@ namespace ElGamal3
 
         private void button_Random_Click(object sender, EventArgs e)
         {
+            //Решето Эратосфена
+            listBox1.Items.Clear();
             Random random = new Random();
-            bool primeno = true;
-            for (int i = 2; i < 500; i++)
-            {
-                for (int k = 2; k < 500; k++)
-                {
-                    if (i != k && i % k == 0)
-                    {
-                        primeno = false;
-                        break;
-                    }
-                }
-                if (primeno)
-                {
-                    listBox1.Items.Add(i);
-                }
-                primeno = true;
-            }
+            List<int> primes = get_primes(10000);
 
-            int randomIndex_p = random.Next(listBox1.Items.Count);
-            int randomIndex_q = random.Next(listBox1.Items.Count);
-            var randomItem_p = listBox1.Items[randomIndex_p];
-            var randomItem_q = listBox1.Items[randomIndex_q];
-            textBox_p.Text = Convert.ToString(randomItem_p);
-            textBox_q.Text = Convert.ToString(randomItem_q);
+            foreach (var item in primes)
+                listBox1.Items.Add(item);
+
+
+            textBox_p.Text = listBox1.Items[random.Next(226, listBox1.Items.Count)].ToString();
+            textBox_q.Text = listBox1.Items[new Random().Next(50, 500)].ToString();
+        }
+        public static List<int> get_primes(int n)
+        {
+
+            bool[] is_prime = new bool[n + 1];
+            for (int i = 2; i <= n; ++i)
+                is_prime[i] = true;
+
+            List<int> primes = new List<int>();
+
+            for (int i = 2; i <= n; ++i)
+                if (is_prime[i])
+                {
+                    primes.Add(i);
+                    if (i * i <= n)
+                        for (int j = i * i; j <= n; j += i)
+                            is_prime[j] = false;
+                }
+
+            return primes;
         }
     }
 }
